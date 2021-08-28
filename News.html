@@ -11,6 +11,8 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <title>CXDA-News</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="/app.js"></script>
 </head>
 
 <body>
@@ -25,13 +27,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/CodeXDA/index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/CodeXDA/News.html">News</a>
+                        <a class="nav-link active" href="/News.html">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/CodeXDA/Forums.html">Forums</a>
+                        <a class="nav-link active" href="/Forums.html">Forums</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -50,7 +52,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/CodeXDA/Contact.html">Contact Us</a>
+                        <a class="nav-link active" href="/Contact.html">Contact Us</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -67,7 +69,15 @@
                 <h1 class="blog-header-logo text-dark" href="#">News</h1>
             </div>
             <div class="col-4 d-flex justify-content-end align-items-center">
-                <a class="link-secondary" href="#" aria-label="Search"></a>
+                <a class="link-secondary" href="#" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="mx-3" role="img"
+                        viewBox="0 0 24 24">
+                        <title>Search</title>
+                        <circle cx="10.5" cy="10.5" r="7.5"></circle>
+                        <path d="M21 21l-5.2-5.2"></path>
+                    </svg>
+                </a>
             </div>
         </div>
     </header>

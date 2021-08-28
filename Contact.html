@@ -11,6 +11,9 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
 
     <title>CXDA-ContactUs</title>
+    <meta name="theme-color" content="#ff0000" />
+    <link rel="manifest" href="manifest.json">
+    <script src="/app.js"></script>
 </head>
 
 <body>
@@ -25,13 +28,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/CodeXDA/index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/CodeXDA/News.html">News</a>
+                        <a class="nav-link active" href="/News.html">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/CodeXDA/Forums.html">Forums</a>
+                        <a class="nav-link active" href="/Forums.html">Forums</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -50,7 +53,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="/CodeXDA/Contact.html">Contact Us</a>
+                        <a class="nav-link active" href="/Contact.html">Contact Us</a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -61,31 +64,32 @@
         </div>
     </nav>
     <div class="container my-5">
-    <form>
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-        </div>
+        <form action=”mail.php” method=”POST”>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
 
-        <select class="form-select" aria-label="Select your query type">
-            <option selected>Open this select menu</option>
-            <option value="1">Forums</option>
-            <option value="2">News</option>
-            <option value="3">Suggestions</option>
-            <option value="4">Other</option>
-          </select>
-        <br>    
-          <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label">Drop a message here:</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-          </div>
-        <div class="mb-3 form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Register me</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
+            <label for="querydropdown" class="form-label">Select your concern</label>
+            <select class="form-select" aria-label="querydropdown">
+                <option selected>Select</option>
+                <option value="1">Forums</option>
+                <option value="2">News</option>
+                <option value="3">Suggestions</option>
+                <option value="4">Other</option>
+            </select>
+            <br>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Drop a message here:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="message" rows="3"></textarea>
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Register me</label>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
     <br>
     <footer class="container">
