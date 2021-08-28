@@ -1,10 +1,10 @@
 const staticCacheName = 'site-static';
 const dynamicCacheName = 'site-dynamic';
 const assets = [
-  '/',
-  '/index.html',
-  '/Forums.html',
-  '/News.html',
+  '/CodeXDA/',
+  '/CodeXDA/index.html',
+  '/CodeXDA/Forums.html',
+  '/CodeXDA/News.html',
 ];
 
 // install event
@@ -46,7 +46,7 @@ self.addEventListener('fetch', evt => {
 
 self.addEventListener('sync', function (event) {
   if (event.tag == 'myFirstSync') {
-    event.waitUntil(caches.open(DyanamicCacheName["/Contact.html"]).then((cache) => {
+    event.waitUntil(caches.open(DyanamicCacheName["/CodeXDA/Contact.html"]).then((cache) => {
       console.log('bgsync');
     }))
   }

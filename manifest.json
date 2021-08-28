@@ -3,17 +3,17 @@
     "name": "CodeXDA",
     "icons": [
       {
-        "src": "/images/icons-192.png",
+        "src": "/CodeXDA/images/icons-192.png",
         "type": "image/png",
         "sizes": "192x192"
       },
       {
-        "src": "/images/icons-512.png",
+        "src": "/CodeXDA/images/icons-512.png",
         "type": "image/png",
         "sizes": "512x512"
       }
     ],
-    "start_url": "/index.html",
+    "start_url": "/CodeXDA/index.html",
     "background_color": "#000000",
     "display": "standalone",
     "theme_color": "#ff0000"
