@@ -1,5 +1,5 @@
 <?php
-//get data from form  
+if(isset($_POST['submit'])){  
 $email= $_POST['email'];
 $message= $_POST['message'];
 $to = "madhurdk2001@gmail.com";
@@ -11,5 +11,6 @@ if($email!=NULL){
     mail($to,$subject,$txt,$headers);
 }
 //redirect
-header("Location:/CodeXDA/thankyou.html");
+header("Location: thankyou.html");
+}
 ?>
