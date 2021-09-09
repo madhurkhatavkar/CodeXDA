@@ -43,11 +43,3 @@ self.addEventListener('fetch', evt => {
     })
   );
 });
-
-self.addEventListener('sync', function (event) {
-  if (event.tag == 'myFirstSync') {
-    event.waitUntil(caches.open(DyanamicCacheName["/CodeXDA/Contact.html"]).then((cache) => {
-      console.log('bgsync');
-    }))
-  }
-});
