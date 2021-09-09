@@ -5,7 +5,6 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -86,16 +85,19 @@
     <div class="container my-4" id="newsDisplay">
         <script>
             let newsDisplay = document.getElementById('newsDisplay');
-
             // Create an ajax get request
+            const data = null;
             const xhr = new XMLHttpRequest();
-            xhr.open('GET', `http://api.mediastack.com/v1/news?access_key=7768c8ce6c9bba003941d8c05a1558a1&languages=en&categories=technology&limit=10`, true);
+            xhr.withCredentials = true;
+            xhr.open("GET", "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q=technology%20news&pageNumber=1&pageSize=10&autoCorrect=true&withThumbnails=false&fromPublishedDate=null&toPublishedDate=null");
+            xhr.setRequestHeader("x-rapidapi-host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
+            xhr.setRequestHeader("x-rapidapi-key", "8af7a9d360msh762c427041a6a26p1c7d7fjsncf2f1440e14c");
 
             // What to do when response is ready
             xhr.onload = function () {
                 if (this.status === 200) {
                     let json = JSON.parse(this.responseText);
-                    let articles = json.data;
+                    let articles = json.value;
                     let newsHtml = "";
                     articles.forEach(function (element, index) {
                         let news = `<br><div class="row featurette d-flex justify-content-center align-items-center">
@@ -105,7 +107,7 @@
                         </div>
                         <div class="col-md-5">
                             <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                                height="400" src="${element["image"]}" alt="Not Found" onerror=this.src="https://source.unsplash.com/500x400/?technology,computer,apple">
+                                height="400" src="${element["image"]["url"]}" alt="Not Found" onerror=this.src="https://source.unsplash.com/500x400/?technology,computer,apple">
                         </div>
                         </div><br>`;
                         newsHtml += news;
@@ -116,7 +118,7 @@
                     console.log("Some error occured")
                 }
             }
-               xhr.send()
+            xhr.send(data);
         </script>
     </div>
     <br>
