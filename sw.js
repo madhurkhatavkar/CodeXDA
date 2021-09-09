@@ -5,6 +5,7 @@ const assets = [
   '/CodeXDA/index.html',
   '/CodeXDA/Forums.html',
   '/CodeXDA/News.html',
+  '/CodeXDA/Contact.html'
 ];
 
 // install event
