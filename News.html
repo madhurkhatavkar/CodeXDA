@@ -82,68 +82,41 @@
         </div>
     </header>
 
-    <div class="container my-4">
-        <div class="row featurette d-flex justify-content-center align-items-center">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">First Headline. <span class="text-muted">It’ll blow your
-                        mind.</span></h2>
-                <p class="lead">News content goes here.</p>
-            </div>
-            <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="500" src="https://source.unsplash.com/500x500/?technology">
+    <div class="container my-4" id="newsDisplay">
+        <script>
+            let newsDisplay = document.getElementById('newsDisplay');
 
-            </div>
-        </div>
+            // Create an ajax get request
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', `http://api.mediastack.com/v1/news?access_key=7768c8ce6c9bba003941d8c05a1558a1&languages=en&categories=technology&limit=10`, true);
 
-    </div>
-
-    <div class="container my-4">
-        <div class="row featurette d-flex justify-content-center align-items-center">
-            <div class="col-md-7 order-md-2 text-md-start">
-                <h2 class="featurette-heading">Second Headline. <span class="text-muted">It’ll blow your
-                        mind.</span></h2>
-                <p class="lead">News content goes here.</p>
-            </div>
-            <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="500" src="https://source.unsplash.com/500x500/?computer">
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container my-4">
-        <div class="row featurette d-flex justify-content-center align-items-center">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">Third Headline. <span class="text-muted">It’ll blow your
-                        mind.</span></h2>
-                <p class="lead">News content goes here .</p>
-            </div>
-            <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="500" src="https://source.unsplash.com/500x500/?smartphone">
-
-            </div>
-        </div>
-
-    </div>
-
-    <div class="container my-4">
-        <div class="row featurette d-flex justify-content-center align-items-center">
-            <div class="col-md-7 order-md-2 text-md-start">
-                <h2 class="featurette-heading">Fourth Headline. <span class="text-muted">It’ll blow your
-                        mind.</span></h2>
-                <p class="lead">News content goes here.</p>
-            </div>
-            <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                    height="500" src="https://source.unsplash.com/500x500/?cryptocurrency,blockchain">
-
-            </div>
-        </div>
-
+            // What to do when response is ready
+            xhr.onload = function () {
+                if (this.status === 200) {
+                    let json = JSON.parse(this.responseText);
+                    let articles = json.data;
+                    let newsHtml = "";
+                    articles.forEach(function (element, index) {
+                        let news = `<br><div class="row featurette d-flex justify-content-center align-items-center">
+                        <div class="col-md-7 order-md-2 text-md-start">
+                            <h2 class="featurette-heading">${element["title"]} <span class="text-muted"></span></h2>
+                            <p class="lead"> ${element["description"]}. <a href="${element['url']}" target="_blank" >Read more here</a></p>
+                        </div>
+                        <div class="col-md-5">
+                            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
+                                height="400" src="${element["image"]}" alt="Not Found" onerror=this.src="https://source.unsplash.com/500x400/?technology,computer,apple">
+                        </div>
+                        </div><br>`;
+                        newsHtml += news;
+                    });
+                    newsDisplay.innerHTML = newsHtml;
+                }
+                else {
+                    console.log("Some error occured")
+                }
+            }
+               xhr.send()
+        </script>
     </div>
     <br>
     <footer class="container">
