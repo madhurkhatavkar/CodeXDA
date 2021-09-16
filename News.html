@@ -74,6 +74,11 @@
     </header>
 
     <div class="container my-4" id="newsDisplay">
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border" id="spinner" role="status">
+            </div>
+          </div>
+        
         <script>
             let newsDisplay = document.getElementById('newsDisplay');
             // Create an ajax get request
@@ -87,6 +92,8 @@
             // What to do when response is ready
             xhr.onload = function () {
                 if (this.status === 200) {
+                    document.getElementById('spinner')
+                        .style.display = 'none';
                     let json = JSON.parse(this.responseText);
                     let articles = json.value;
                     let newsHtml = "";
