@@ -84,10 +84,7 @@
             // Create an ajax get request
             const data = null;
             const xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            xhr.open("GET", "https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q=technology%20news&pageNumber=1&pageSize=10&autoCorrect=true&withThumbnails=false&fromPublishedDate=null&toPublishedDate=null");
-            xhr.setRequestHeader("x-rapidapi-host", "contextualwebsearch-websearch-v1.p.rapidapi.com");
-            xhr.setRequestHeader("x-rapidapi-key", "8af7a9d360msh762c427041a6a26p1c7d7fjsncf2f1440e14c");
+            xhr.open("GET", "http://api.mediastack.com/v1/news?access_key=813ec89d4eb71a4f1713522aa0c5ad8c&sources=cnn,bbc&categories=technology&languages=en&sort=published_desc&offset=0&limit=20");
 
             // What to do when response is ready
             xhr.onload = function () {
@@ -95,7 +92,7 @@
                     document.getElementById('spinner')
                         .style.display = 'none';
                     let json = JSON.parse(this.responseText);
-                    let articles = json.value;
+                    let articles = json['data'];
                     let newsHtml = "";
                     articles.forEach(function (element, index) {
                         let news = `<br><div class="row featurette d-flex justify-content-center align-items-center">
@@ -105,7 +102,7 @@
                         </div>
                         <div class="col-md-5">
                             <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500"
-                                height="400" src="${element["image"]["url"]}" alt="Not Found" onerror=this.src="https://source.unsplash.com/500x400/?technology,computer,apple">
+                                height="400" src="${element["image"]}" alt="Not Found" onerror=this.src="https://source.unsplash.com/500x400/?technology,computer,apple">
                         </div>
                         </div><br>`;
                         newsHtml += news;
